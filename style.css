@@ -1,0 +1,98 @@
+
+/* Basic page style resets */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Import fonts */
+@font-face {
+  font-family: HK Grotesk;
+  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
+    format("opentype");
+}
+@font-face {
+  font-family: HK Grotesk;
+  font-weight: bold;
+  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
+    format("opentype");
+}
+
+html, body{
+  height: 100%;
+}
+
+body {
+  font-family: HK Grotesk;
+  background-color: rgb(58, 129, 0);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: none;
+}
+
+/* Page structure */
+.score{
+  font-size: 4em;
+}
+
+.board{
+  height: 600px;
+  width: 600px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 80px;
+}
+
+.hole{
+  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3); /*change this to alternating rainbow*/
+  border-radius: 50%;
+  box-shadow: inset 0 10px 0 7px rgb(53, 21, 6),
+              inset 0 20px 20px 15px rgba(0,0,0,.3),
+              0 0 5px rgba(0,0,0, .5);
+  position: relative;
+  overflow: hidden;
+}
+
+.hole .mole{
+  width: 70%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  animation: raise .3s ease-out;
+}
+@keyframes raise {
+  0%{
+    transform: translateX(-50%) translateY(100%);
+  }
+  100%{
+    transform: translateX(-50%) translateY(0%);
+  }
+}
+
+.cursor{
+  height: 110px;
+  width: 100px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  background-image: url('https://cdn.glitch.global/43a7e515-45a2-4f53-b020-2b9bdfb58a74/hand.png?v=1719697059282');
+  background-size: 100% 100%;
+  transform: translate(-50%, -20%);
+  transition: transform .1s;
+  pointer-events: none;
+}
+
+.cursor.active{
+  transform: translate(-50%, -20%) rotate(50deg);
+}
+
+/* Subheading */
+h2 {
+  color: #2800FF;
+}
